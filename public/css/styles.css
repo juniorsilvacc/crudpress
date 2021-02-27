@@ -64,6 +64,11 @@ header, .navbar{
 }
 
 @media(max-width: 767px){
+    .th-button{
+        display: block;
+        text-align: center;
+        
+    }
     .th-button button{
         margin-bottom: 8px;
     }
