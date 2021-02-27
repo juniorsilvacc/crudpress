@@ -73,3 +73,8 @@ header, .navbar{
         margin-bottom: 8px;
     }
 }
+
+/* Articles */
+.article-form textarea{
+    margin-top: 15px;
+}

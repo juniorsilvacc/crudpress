@@ -7,6 +7,8 @@ router.get("/admin/categories/new", (req, res) => {
     res.render("admin/categories/new");
 });
 
+
+
 router.post("/categories/save", (req, res) => {
     const title = req.body.title;
     if(title != undefined){
@@ -21,11 +23,15 @@ router.post("/categories/save", (req, res) => {
     }
 });
 
+
+
 router.get("/admin/categories", (req, res) => {
     Category.findAll().then(categories => {
         res.render("admin/categories/index", {categories});
     });
 });
+
+
 
 router.post("/categories/delete", (req, res) => {
     const id = req.body.id;
@@ -50,6 +56,8 @@ router.post("/categories/delete", (req, res) => {
     }
 });
 
+
+
 router.get("/admin/categories/edit/:id", (req, res) => {
     const id = req.params.id;
 
@@ -69,6 +77,8 @@ router.get("/admin/categories/edit/:id", (req, res) => {
         res.redirect("/admin/categories");
     });
 });
+
+
 
 router.post("/categories/update", (req, res) => {
     const id = req.body.id;
