@@ -12,6 +12,6 @@ const Category = connection.define('categories', {
     }
 });
 
-Category.sync({force: false}).then(()=>{console.log("Table create!")})
+Category.sync({force: false}).then(()=>{console.log()})
 
 module.exports = Category;

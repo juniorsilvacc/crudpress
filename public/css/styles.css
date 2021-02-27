@@ -21,6 +21,15 @@ header, .navbar{
     color: #FFF;
 }
 
+.menu li a:hover{
+    color: #0A58CA;
+}
+
+.menu{
+    margin-left: auto;
+}
+
+
 /* New */
 .card .card-header h2{
     margin-top: 20px;
