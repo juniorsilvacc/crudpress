@@ -27,4 +27,27 @@ router.get("/admin/categories", (req, res) => {
     });
 });
 
+router.post("/categories/delete", (req, res) => {
+    const id = req.body.id;
+    if(id != undefined){
+
+        if(!isNaN(id)){
+
+            Category.destroy({
+                where: {
+                    id
+                }
+            }).then(() => {
+                res.redirect("/admin/categories");
+            })
+
+        } else { //Se não for um numero
+            res.redirect("/admin/categories");
+        }
+
+    } else { //Se for null
+        res.redirect("/admin/categories");
+    }
+});
+
 module.exports = router;
