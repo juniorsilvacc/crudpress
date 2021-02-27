@@ -1,0 +1,61 @@
+/* Gerais */
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFF;
+}
+
+/* Nav */
+.title-logo{
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+header, .navbar{
+    background-color: #202020;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.menu li a{
+    color: #FFF;
+}
+
+/* New */
+.card .card-header h2{
+    margin-top: 20px;
+}
+
+.card .card-body{
+    margin-top: 8px;
+}
+
+.card-body form button{
+    margin-top: 12px;
+    background-color: #202020;
+    border: 0;
+    transition: 200ms;
+}
+
+.card-body form button:hover{
+    background-color: #202020;
+}
+
+/* Categories */
+#categories .table{
+    margin-top: 8px;
+}
+
+#categories a{
+    margin-bottom: 5px;
+}
+
+.th-button button{
+    margin-left: 10px;
+}
+
+@media(max-width: 767px){
+    .th-button button{
+        margin-bottom: 8px;
+    }
+}

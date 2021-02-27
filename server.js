@@ -2,7 +2,12 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const connection = require("./database/database")
+const connection = require("./database/database");
+
+const categoriesController = require("./categories/CategoriesController");
+const categoryModel = require("./categories/Category");
+
+const articlesController = require("./articles/AriclesController");
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -18,12 +23,17 @@ app.use(bodyParser.json());
 connection
     .authenticate()
     .then(() => {
-        console.log("Conexão feita com sucesso!")
-    }).catch((erro) => {
-        console.log(erro);
+        console.log("Conexão feita com sucesso!");
+    }).catch((error) => {
+        console.log(error);
     });
 
+
 // Rotas
+app.use("/", categoriesController);
+
+app.use("/", articlesController);
+
 app.get("/", (req, res) => {
     res.render("index")
 });

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const connection = new Sequelize('crud', 'root', 'coremas32', {
+const connection = new Sequelize('guiapress', 'root', 'coremas32', {
     host: 'localhost',
     dialect: 'mysql'
 });
