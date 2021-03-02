@@ -25,6 +25,16 @@ header, .navbar{
     color: #0A58CA;
 }
 
+/* Menu home */
+.menuHome li a{
+    color: #FFF;
+    text-decoration: none;
+}
+
+.menuHome li a:hover{
+    color: #0A58CA;
+}
+
 /* New */
 .card .card-header h2{
     margin-top: 20px;
