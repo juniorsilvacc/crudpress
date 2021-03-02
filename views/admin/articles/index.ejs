@@ -1,0 +1,46 @@
+<%- include("../../partials/header.ejs"); %>
+
+    <%- include("../../partials/nav.ejs"); %>
+    
+    <div class="container" id="categories">
+        <h2>Artigos</h2>
+        <a class="btn btn-dark" href="/admin/articles/new">Criar nova artigos</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Slug</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% articles.forEach(article => { %>
+                   <td><%= article.id %></td>
+                   <td><%= article.title %></td>
+                   <td><%= article.slug %></td>
+                   <td><%= article.category.title %></td>
+                   <td>
+                        <form action="/articles/delete" method="POST" style="display: inline;" onsubmit="confirmarDelecao(event, this)">
+                            <input type="hidden" name="id" value="<%= article.id %>">
+                            <button class="btn btn-danger">Excluir</button>
+                        </form>  
+                   </td>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+<%- include("../../partials/footer.ejs"); %>
+<script>
+
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        const desision = confirm("Você quer excluir este artigo?");
+        if(desision){
+            form.submit();
+        } 
+    }
+
+</script>

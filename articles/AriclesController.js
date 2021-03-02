@@ -5,7 +5,11 @@ const Article = require("./Article");
 const slugify = require("slugify");
 
 router.get("/admin/articles", (req, res) => {
-    res.send("ROTA DE ARTIGOS");
+    Article.findAll({
+        include: [{model: Category}]
+    }).then(articles => {
+        res.render("admin/articles/index", {articles})
+    });
 });
 
 router.get("/admin/articles/new", (req, res) => {
@@ -27,6 +31,29 @@ router.post("/articles/save", (req, res) => {
     }).then(() => {
         res.redirect("/admin/articles");
     })
+});
+
+router.post("/articles/delete", (req, res) => {
+    const id = req.body.id;
+    if(id != undefined){
+
+        if(!isNaN(id)){
+
+            Article.destroy({
+                where: {
+                    id
+                }
+            }).then(() => {
+                res.redirect("/admin/articles");
+            })
+
+        } else { //Se não for um numero
+            res.redirect("/admin/articles");
+        }
+
+    } else { //Se for null
+        res.redirect("/admin/articles");
+    }
 });
 
 module.exports = router;
