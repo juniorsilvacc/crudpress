@@ -10,6 +10,7 @@ const categoryModel = require("./categories/Category");
 const articlesController = require("./articles/AriclesController");
 const articleModel = require("./articles/Article");
 const Article = require("./articles/Article");
+const Category = require("./categories/Category");
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -40,7 +41,9 @@ app.get("/", (req, res) => {
     Article.findAll({
         order: [['id', 'DESC']]
     }).then(articles => {
-        res.render("index", {articles});
+        Category.findAll().then(categories => {
+            res.render("index", {articles, categories})
+        })
     });
 });
 
@@ -52,7 +55,31 @@ app.get("/:slug", (req, res) => {
         }
     }).then(article => {
         if(article != undefined){
-            res.render("article", {article})
+            Category.findAll().then(categories => {
+                res.render("article", {article, categories})
+            })
+        } else {
+            res.redirect("/")
+        }
+    }).catch(err => {
+        res.redirect("/")
+    })
+})
+
+app.get("/category/:slug", (req, res) => {
+    const slug = req.params.slug;
+    Category.findOne({
+        where:{
+            slug
+        },
+        include: [{model: Article}]
+    }).then(category => {
+        if(category != undefined){
+            
+            Category.findAll().then(categories => {
+                res.render("index", {articles: category.articles, categories})
+            });
+
         } else {
             res.redirect("/")
         }

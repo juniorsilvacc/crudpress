@@ -11,28 +11,8 @@ body{
     letter-spacing: 3px;
 }
 
-header, .navbar{
-    background-color: #202020;
-    height: 80px;
-    margin-bottom: 20px;
-}
-
-.menu li a{
-    color: #FFF;
-}
-
-.menu li a:hover{
-    color: #0A58CA;
-}
-
-/* Menu home */
-.menuHome li a{
-    color: #FFF;
-    text-decoration: none;
-}
-
-.menuHome li a:hover{
-    color: #0A58CA;
+nav, .navbar{
+    margin-bottom: 10px; 
 }
 
 /* New */
