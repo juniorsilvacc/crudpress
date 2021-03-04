@@ -4,6 +4,7 @@ const Category = require("../categories/Category");
 const Article = require("./Article");
 const slugify = require("slugify");
 
+
 router.get("/admin/articles", (req, res) => {
     Article.findAll({
         include: [{model: Category}]
@@ -54,6 +55,22 @@ router.post("/articles/delete", (req, res) => {
     } else { //Se for null
         res.redirect("/admin/articles");
     }
+});
+
+
+router.get("/admin/articles/edit/:id", (req, res) => {
+    const id = req.params.id;
+    Article.findByPk(id).then(article => {
+        if(article != undefined){
+            Category.findAll().then(categories => {
+                res.render("admin/articles/edit", {categories})
+            })
+        } else {
+            res.redirect("/");
+        }
+    }).catch(err => {
+        res.redirect("/");
+    });
 });
 
 module.exports = router;

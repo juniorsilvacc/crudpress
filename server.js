@@ -9,6 +9,7 @@ const categoryModel = require("./categories/Category");
 
 const articlesController = require("./articles/AriclesController");
 const articleModel = require("./articles/Article");
+
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
 
