@@ -5,13 +5,14 @@ const bodyParser = require("body-parser");
 const connection = require("./database/database");
 
 const categoriesController = require("./categories/CategoriesController");
-const categoryModel = require("./categories/Category");
+const Category = require("./categories/Category");
 
 const articlesController = require("./articles/AriclesController");
-const articleModel = require("./articles/Article");
+const Article = require("./articles/Article"); 
 
-const Article = require("./articles/Article");
-const Category = require("./categories/Category");
+const UsersController = require("./users/UsersController");
+const User = require("./users/User");
+ 
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -37,6 +38,8 @@ connection
 app.use("/", categoriesController);
 
 app.use("/", articlesController);
+
+app.use("/", UsersController);
 
 app.get("/", (req, res) => {
     Article.findAll({
