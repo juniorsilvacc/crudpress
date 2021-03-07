@@ -81,3 +81,12 @@ nav, .navbar{
 .create h3{
     text-align: center;
 }
+
+/* Users */
+.users h3{
+    margin: 40px 0 15px 0;
+}
+
+.users a{
+    margin-bottom: 20px;
+}
