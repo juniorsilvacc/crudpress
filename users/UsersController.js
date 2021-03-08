@@ -4,15 +4,13 @@ const User = require("./User");
 const bcrypt = require("bcryptjs");
 
 router.get("/admin/users", (req, res) => {
-    const users = req.params.users;
-
     User.findAll().then(users => {
         res.render("admin/users/index", {users});
-    })
+    });
 });
 
 router.get("/admin/users/create", (req, res) => {
-    res.render("admin/users/create")
+    res.render("admin/users/create");
 });
 
 router.post("/users/create", (req, res) => {
@@ -66,7 +64,7 @@ router.post("/authenticate", (req, res) => {
                     id: user.id,
                     email: user.email
                 }
-                res.json(req.session.user);
+                res.redirect("/admin/articles");
             } else {
                 res.redirect("/login")
             }
